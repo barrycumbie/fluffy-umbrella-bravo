@@ -6,20 +6,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //todo: make 'em random 
 
-    console.log(Math.floor(Math.random()*52)); 
+    console.log(Math.floor(Math.random() * 52));
 
-
-    randomDeckOfCards.forEach((card) =>
-        // document.getElementById('stackOfCards').append("index of the array = " + j + " & " + "avlue of the array =" + card + "<br>")
-        document.getElementById('stackOfCards').append(card )
+    let cardP = document.createElement('p');
+    cardP.classList.add("text-wrap");
+    cardP.classList.add("drag");
     
-    );
+    randomDeckOfCards.forEach((card) => {
+        // document.getElementById('stackOfCards').append("index of the array = " + j + " & " + "avlue of the array =" + card + "<br>")
+        cardP.textContent += card + ' ';
+        // document.getElementById('btnClicky').addEventListener('click', btnClicky); 
+    });
+    document.getElementById('stackOfCards').append(cardP);
 
+    $('.drag').draggable(); 
 
-
-    // document.getElementById('btnClicky').addEventListener('click', btnClicky); 
-  }
- );
+    $( "#spades" ).droppable({
+        drop: function( event, ui ) {
+          $( this )
+            .addClass( "redClass" );
+            
+        }
+      });
+    
+});
 
 function makeDeckOfCards() {
 
