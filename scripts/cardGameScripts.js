@@ -2,6 +2,37 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("document succesfully loaded, baby");
 
     console.log(`here's the cookie`, document.cookie); 
+    
+    // Function to display all storage data
+    function displayStorageData() {
+        // Display cookies
+        const cookies = document.cookie || 'None';
+        $('#cookieData').text(cookies);
+        
+        // Display sessionStorage
+        let sessionItems = [];
+        for (let i = 0; i < sessionStorage.length; i++) {
+            const key = sessionStorage.key(i);
+            const value = sessionStorage.getItem(key);
+            sessionItems.push(`${key}: ${value}`);
+        }
+        $('#sessionData').text(sessionItems.length > 0 ? sessionItems.join(', ') : 'None');
+        
+        // Display localStorage
+        let localItems = [];
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            const value = localStorage.getItem(key);
+            localItems.push(`${key}: ${value}`);
+        }
+        $('#localData').text(localItems.length > 0 ? localItems.join(', ') : 'None');
+    }
+    
+    // Initial display
+    displayStorageData();
+    
+    // Update storage display every 2 seconds
+    setInterval(displayStorageData, 2000);
 
     const randomDeckOfCards = makeDeckOfCards();
     console.log("random Deck: ", randomDeckOfCards);
