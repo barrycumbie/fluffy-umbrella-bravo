@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     console.log("document succesfully loaded, baby");
 
+    console.log(`here's the cookie`, document.cookie); 
+
     const randomDeckOfCards = makeDeckOfCards();
     console.log("random Deck: ", randomDeckOfCards);
 
@@ -21,13 +23,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     $('.drag').draggable(); 
 
-    $( "#spades" ).droppable({
-        drop: function( event, ui ) {
-          $( this )
-            .addClass( "redClass" );
+    //$ == jquery land.
+    $( "#spades" ).droppable( 
+             { drop: function( event, ui ) {
+          $( this ).addClass( "redClass" );
+          //todo: if it's correct, make it green. 
             
         }
-      });
+      }
+    );
     
 });
 

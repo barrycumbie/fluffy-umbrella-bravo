@@ -4,5 +4,13 @@
 
 .redClass {
 
-    border: solid 2px red; 
+    border: solid 5px red; 
+}
+
+#spades {
+
+    height: 150px; 
+    width: 150px; 
+    background-color: lightpink;
+
 }
